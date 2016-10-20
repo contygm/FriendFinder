@@ -17,8 +17,8 @@ module.exports = function(app){
 		// score sum function
 		function sum(array){
 			var result = 0;
-			for (var i = 0; i< ary.length; i++) {
-				result += array[i];
+			for (var i = 0; i< array.length; i++) {
+				result += parseInt(array[i]);
 			};
 			return result;
 		};
@@ -28,14 +28,14 @@ module.exports = function(app){
 
 		// get difference between person and friend options
 		for (var i = 0; i < daOptions.length; i++){
-			var diff = abs(NFTotal - sum(daOptions[i]));
+			var diff = Math.abs(NFtotal - sum(daOptions[i]));
 			friendDiff.push(diff);
 		}
 
 		// compare friend totals
 		function indexOfSmallest(array) {
 			var lowest = 0;
-			for (var i = 1; i < a.length; i++) {
+			for (var i = 1; i < array.length; i++) {
 				if (array[i] < array[lowest]) lowest = i;
 			}
 			return lowest;
@@ -45,7 +45,7 @@ module.exports = function(app){
 		var match = indexOfSmallest(friendDiff);
 
 		console.log(match);
-		console.log(NFTotal);
+		console.log(NFtotal);
 		console.log(friendDiff);
 
 	});
