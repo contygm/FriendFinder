@@ -1,6 +1,3 @@
-//A GET route with the url /api/friends. 
-//This will be used to display a JSON 
-//of all possible friends.
 
 //A POST routes /api/friends. 
 //This will be used to handle incoming 
@@ -14,15 +11,15 @@ module.exports = function(app){
 		res.json(daOptions);
 	});
 
-	// app.post('/api/tables', function (req, res) {
-	// 	var newReservation = req.body;
-	// 	newReservation.routeName = newReservation.customerName.replace(/\s+/g, '').toLowerCase();
+	app.post('/api/friends', function (req, res) {
+		var newFriend = req.body;
+		// newFriend.routeName = newFriend.customerName.replace(/\s+/g, '').toLowerCase();
 
-	// 	console.log(newReservation);
+		console.log(newFriend);
 
-	// 	reservation.push(newReservation);
+		friends.push(req.body);
 
-	// 	res.json(newReservation);
-	// });
+		res.json(newFriend);
+	});
 }
 
