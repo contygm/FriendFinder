@@ -11,13 +11,42 @@ module.exports = function(app){
 
 	app.post('/api/friends', function (req, res) {
 		var newFriend = req.body;
-		var NFtotal = 0;
 
 		daOptions.push(newFriend);
 
+		// score sum function
+		function sum(array){
+			var result = 0;
+			for (var i = 0; i< ary.length; i++) {
+				result += array[i];
+			};
+			return result;
+		};
 
+		var NFtotal = sum(newFriend.scores);
+		var friendDiff = [];
 
-		console.log(daOptions[1].scores);
+		// get difference between person and friend options
+		for (var i = 0; i < daOptions.length; i++){
+			var diff = abs(NFTotal - sum(daOptions[i]));
+			friendDiff.push(diff);
+		}
+
+		// compare friend totals
+		function indexOfSmallest(array) {
+			var lowest = 0;
+			for (var i = 1; i < a.length; i++) {
+				if (array[i] < array[lowest]) lowest = i;
+			}
+			return lowest;
+		}
+
+		// find match
+		var match = indexOfSmallest(friendDiff);
+
+		console.log(match);
+		console.log(NFTotal);
+		console.log(friendDiff);
 
 	});
 }
