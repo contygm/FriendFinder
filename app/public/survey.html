@@ -23,25 +23,27 @@
 		<input type="text" name="" id="name" class="form-control" required="">
 		
 		<h3>Your Photo (highly recommended)</h3>
-		<input type="text" name="" id="name" class="form-control" required=""><hr>
+		<input type="text" name="" id="photo" class="form-control" required=""><hr>
 
 		<h2>The Good Stuff</h2>
 
 		<h3>Question 1</h3>
 		<h4>Planning and executing the perfect prank is the perfect afternoon activity.</h4>
 
-		<select class="form-control">
-			<option>1 (Strongly Disagree)</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5 (Strongly Agree)</option>
+		<select class="form-control" id = 'q1'>
+			<option value = ""> </option>
+			<option value = '1'>1 (Strongly Disagree)</option>
+			<option value = '2'>2</option>
+			<option value = '3'>3</option>
+			<option value = '4'>4</option>
+			<option value = '5'>5 (Strongly Agree)</option>
 		</select>
 
 		<h3>Question 2</h3>
 		<h4>I dance to good beats, regardless of my personal level of rhythm.</h4>
 
-		<select class="form-control">
+		<select class="form-control" id = 'q2'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -52,7 +54,8 @@
 		<h3>Question 3</h3>
 		<h4>Cooking, even flipping burgers, is an art form.</h4>
 
-		<select class="form-control">
+		<select class="form-control" id = 'q3'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -63,7 +66,8 @@
 		<h3>Question 4</h3>
 		<h4>Wine (or Candy for underage people) is awesome.</h4>
 
-		<select class="form-control">
+		<select class="form-control" id = 'q4'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -74,7 +78,8 @@
 		<h3>Question 5</h3>
 		<h4>Puerto Rican food is the best food in all the land.</h4>
 		
-		<select class="form-control">
+		<select class="form-control" id = 'q5'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -85,7 +90,8 @@
 		<h3>Question 6</h3>
 		<h4>When I need to recharge, I call up my squad for some responsible debauchery.</h4>
 		
-		<select class="form-control">
+		<select class="form-control" id = 'q6'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -96,7 +102,8 @@
 		<h3>Question 7</h3>
 		<h4>It's hard to break my composure.</h4>
 
-		<select class="form-control">
+		<select class="form-control" id = 'q7'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -107,7 +114,8 @@
 		<h3>Question 8</h3>
 		<h4>I understand the allure of fan fiction.</h4>
 
-		<select class="form-control">
+		<select class="form-control" id = 'q8'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -118,7 +126,8 @@
 		<h3>Question 9</h3>
 		<h4>Pizza is life.</h4>
 
-		<select class="form-control">
+		<select class="form-control" id = 'q9'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -129,7 +138,8 @@
 		<h3>Question 10</h3>
 		<h4>W doesn't not deserve a second (or third) syllable because all letters are created equal.</h4>
 
-		<select class="form-control">
+		<select class="form-control" id = 'q10'>
+			<option value = ""> </option>
 			<option>1 (Strongly Disagree)</option>
 			<option>2</option>
 			<option>3</option>
@@ -154,5 +164,71 @@
 	    </footer>
 	</div>
 	
+	<script type="text/javascript">
+
+	    // Capture the form inputs 
+	    $("#submit").on("click", function(){
+
+	    	$('.form-control').each(function() {
+			    	console.log($(this).val())
+				});
+
+	    	// Form validation
+	    	function validateForm() {
+				var isValid = true;
+				$('.form-control').each(function() {
+			    	if ( $(this).val() === '' ) {
+			    		isValid = false;
+			    	} 			    	 	
+				});	
+				return isValid; 		  
+			}
+
+			// If all required fields are filled
+			if (validateForm())
+			{
+				// Create an object for the user's data
+		    	var userData = {
+		    		name: $("#name").val(),
+		    		photo: $("#photo").val(),
+		    		scores: [parseInt($("#q1").val()), 
+		    			parseInt($("#q2").val()), 
+		    			parseInt($("#q3").val()), 
+		    			parseInt($("#q4").val()), 
+		    			parseInt($("#q5").val()), 
+		    			parseInt($("#q6").val()), 
+		    			parseInt($("#q7").val()), 
+		    			parseInt($("#q8").val()), 
+		    			parseInt($("#q9").val()), 
+		    			parseInt($("#q10").val()) ]
+		    	}
+
+// Remove when DONE
+		    	console.log(userData)
+
+
+		    	// Grab the URL of the website
+		    	// var currentURL = window.location.origin;
+
+		    	// // AJAX post the data to the friends API. 
+		    	// $.post(currentURL + "/api/friends", userData, function(data){
+
+		    	// 	// Grab the result from the AJAX post so that the best match's name and photo are displayed.
+		    	// 	$("#matchName").text(data.name);
+		    	// 	$('#matchImg').attr("src", data.photo);
+
+			    // 	// Show the modal with the best match 
+			    // 	$("#resultsModal").modal('toggle');
+
+		    	// });
+			} else {
+				alert("Please fill out all fields before submitting!");
+			}
+	    	
+	    	return false;
+	    });
+
+	</script>
+
 </body>
 </html>
