@@ -12,8 +12,6 @@ module.exports = function(app){
 	app.post('/api/friends', function (req, res) {
 		var newFriend = req.body;
 
-		daOptions.push(newFriend);
-
 		// score sum function
 		function sum(array){
 			var result = 0;
@@ -28,7 +26,7 @@ module.exports = function(app){
 
 		// get difference between person and friend options
 		for (var i = 0; i < daOptions.length; i++){
-			var diff = Math.abs(NFtotal - sum(daOptions[i]));
+			var diff = Math.abs(NFtotal - sum(daOptions[i].scores));
 			friendDiff.push(diff);
 		}
 
@@ -47,6 +45,7 @@ module.exports = function(app){
 		console.log(match);
 		console.log(NFtotal);
 		console.log(friendDiff);
+		daOptions.push(newFriend);
 
 	});
 }
