@@ -1,7 +1,5 @@
 
 //A POST routes /api/friends. 
-//This will be used to handle incoming 
-//survey results. 
 //handle the compatibility logic.
 
 var daOptions = require('../data/friends.js');
@@ -13,13 +11,14 @@ module.exports = function(app){
 
 	app.post('/api/friends', function (req, res) {
 		var newFriend = req.body;
-		// newFriend.routeName = newFriend.customerName.replace(/\s+/g, '').toLowerCase();
+		var NFtotal = 0;
 
-		console.log(newFriend);
+		daOptions.push(newFriend);
 
-		friends.push(req.body);
 
-		res.json(newFriend);
+
+		console.log(daOptions[1].scores);
+
 	});
 }
 
